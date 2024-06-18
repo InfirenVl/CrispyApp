@@ -10,17 +10,16 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/block" />
+        android:src="@drawable/block_4" />
 
     <TextView
         android:layout_width="300dp"
-        android:layout_height="134dp"
+        android:layout_height="164dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="300dp"
-        android:text="ТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекст
-"
-        android:fontFamily="@font/inter_regular"
-        android:textSize="14sp"
+        android:text="После перехода в выбранное Рабочее пространство нажмите на кнопку 1, чтобы отредактировать выбранную Доску. Нажмите на саму Доску, чтобы открыть экран Доски."
+        android:fontFamily="@font/lato_regular"
+        android:textSize="15sp"
         android:textColor="@color/brown_light" />
 
     <TextView

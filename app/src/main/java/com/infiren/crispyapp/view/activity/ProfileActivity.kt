@@ -31,9 +31,10 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 
     private lateinit var profileName: TextView
     private lateinit var editTextNewName: EditText
-    private lateinit var profileChangeNameButton: ImageButton
-    private lateinit var logoutButton: Button
-    private lateinit var deleteAccountButton: Button
+    private lateinit var profileChangeNameButton: LinearLayout
+    private lateinit var logoutButton: LinearLayout
+    private lateinit var deleteAccountButton: LinearLayout
+    private lateinit var profilePassword: TextView
     private lateinit var presenter: ProfilePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +45,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         profileChangeNameButton = findViewById(R.id.profile_ch_name)
         logoutButton = findViewById(R.id.button_logout)
         deleteAccountButton = findViewById(R.id.button_delete_account)
+        profilePassword = findViewById(R.id.profile_password)
 
         presenter = ProfilePresenter(this)
 
@@ -54,6 +56,10 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 
         deleteAccountButton.setOnClickListener {
             showDeleteAccountConfirmationDialog()
+        }
+
+        profilePassword.setOnClickListener {
+            showChangePasswordDialog()
         }
 
         profileChangeNameButton.setOnClickListener {
@@ -81,12 +87,75 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         finish()
     }
 
+
     override fun onNameChanged(newName: String) {
         profileName.text = newName
     }
 
     override fun getContext(): Context {
         return this
+    }
+
+    private fun showChangePasswordDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_change_password, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        val editTextNewPassword = dialogView.findViewById<EditText>(R.id.textViewChangePasswordTitle)
+        val editTextNewPasswordConfirm = dialogView.findViewById<EditText>(R.id.editTextNewPasswordConfirm)
+        val buttonChangePassword = dialogView.findViewById<Button>(R.id.buttonChangePassword)
+
+        var isPasswordVisible = false
+        var isRepeatPasswordVisible = false
+
+        editTextNewPassword.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (editTextNewPassword.right - editTextNewPassword.compoundDrawables[2].bounds.width())) {
+                    isPasswordVisible = !isPasswordVisible
+                    togglePasswordVisibility(editTextNewPassword, isPasswordVisible)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
+
+        editTextNewPasswordConfirm.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (editTextNewPasswordConfirm.right - editTextNewPasswordConfirm.compoundDrawables[2].bounds.width())) {
+                    isRepeatPasswordVisible = !isRepeatPasswordVisible
+                    togglePasswordVisibility(editTextNewPasswordConfirm, isRepeatPasswordVisible)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
+
+        buttonChangePassword.setOnClickListener {
+            val newPassword = editTextNewPassword.text.toString()
+            val newPasswordConfirm = editTextNewPasswordConfirm.text.toString()
+
+            if (newPassword.isNotEmpty() && newPassword == newPasswordConfirm) {
+                val token = SharedPrefsHelper(this).getToken()
+                if (token != null) {
+                    presenter.changeUserPassword(token, newPassword, newPasswordConfirm)
+                }
+                dialog.dismiss()
+            } else {
+                Toast.makeText(this, "Пароли не совпадают или пустые", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        dialog.show()
+    }
+
+    private fun togglePasswordVisibility(editText: EditText, isVisible: Boolean) {
+        if (isVisible) {
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        editText.setSelection(editText.text.length)
     }
 
     private fun showLogoutConfirmationDialog() {

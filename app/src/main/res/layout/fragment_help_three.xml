@@ -10,17 +10,16 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/block" />
+        android:src="@drawable/block_3" />
 
     <TextView
         android:layout_width="300dp"
-        android:layout_height="134dp"
+        android:layout_height="164dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="300dp"
-        android:text="ТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекст
-"
-        android:fontFamily="@font/inter_regular"
-        android:textSize="14sp"
+        android:text="При переходе на экран Рабочего пространства или Доски будет отображаться нижняя панель. Нажмите на кнопку 1, чтобы вернуться на Главный экран. Нажмите на кнопку 2, чтобы перейти в настройки выбранной вкладки. Нажмите на кнопку 3, чтобы открыть Настройки профиля."
+        android:fontFamily="@font/lato_regular"
+        android:textSize="15sp"
         android:textColor="@color/brown_light" />
 
     <TextView

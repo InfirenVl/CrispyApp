@@ -12,17 +12,18 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/block" />
+        android:src="@drawable/block_1" />
 
     <TextView
         android:layout_width="300dp"
-        android:layout_height="134dp"
+        android:layout_height="164dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="300dp"
-        android:text="ТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекстТекст
+        android:text="После регистрации и авторизации вы перейдете на Главный экран. Здесь вы можете попасть в Настройки профиля, нажав на кнопку 1, или создать
+         Рабочее пространство, нажав на кнопку 2.
 "
-        android:fontFamily="@font/inter_regular"
-        android:textSize="14sp"
+        android:fontFamily="@font/lato_regular"
+        android:textSize="15sp"
         android:textColor="@color/brown_light" />
 
     <TextView

@@ -28,18 +28,14 @@ class SplashActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_FULLSCREEN)
 
         Handler(Looper.getMainLooper()).postDelayed({
-//            if (HelpPreferenceManager.isFirstLaunch(this)) {
-//                val intent = Intent(this, HelpActivity::class.java)
-//                HelpPreferenceManager.setFirstLaunch(this, false)
-//                startActivity(intent)
-//            } else {
-//                val intent = Intent(this, LoginActivity::class.java)
-//                startActivity(intent)
-//            }
-            //Для дебага
-            val intent = Intent(this, HelpActivity::class.java)
-            HelpPreferenceManager.setFirstLaunch(this, false)
-            startActivity(intent)
+            if (HelpPreferenceManager.isFirstLaunch(this)) {
+                val intent = Intent(this, HelpActivity::class.java)
+                HelpPreferenceManager.setFirstLaunch(this, false)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
 
             finish()
         }, SPLASH_DISPLAY_LENGTH)
