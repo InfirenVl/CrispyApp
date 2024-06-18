@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="277dp"
+    android:orientation="vertical"
+    android:paddingTop="60dp"
+    android:paddingBottom="30dp"
+    android:background="@color/sand_light"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="Вы действительно хотите выйти из аккаунта?"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_confirm_logout"
+            android:layout_width="105dp"
+            android:layout_height="60dp"
+            android:text="Выйти"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="15sp"
+            android:backgroundTint="@color/scarlet"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button_cancel_logout"
+            android:layout_width="105dp"
+            android:layout_height="60dp"
+            android:text="Отмена"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="15sp"
+            android:backgroundTint="@color/brown_light"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

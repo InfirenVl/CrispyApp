@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="277dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/brown_light"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="60dp"
+    android:paddingBottom="30dp"
+    android:stateListAnimator="@null"
+    app:elevation="0dp">
+
+        <TextView
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="@string/del_is_correct_acc"
+            android:textColor="@color/sand_light"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_confirm_delete"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="Удалить"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="15sp"
+                android:backgroundTint="@color/dark_red"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/button_cancel_delete"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="Отмена"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="15sp"
+                android:backgroundTint="@color/sand_light"
+                android:textColor="@color/brown" />
+        </LinearLayout>
+</LinearLayout>

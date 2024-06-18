@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/sand_light"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Настройка пространства"
+        android:textSize="18sp"
+        android:textColor="@color/brown_light"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextWorkspaceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Переименовать доску"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:textColor="@color/brown_light"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextAddUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Добавить пользователя"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background"
+        android:textColor="@color/brown_light"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/buttonUpdateWorkspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Изменить"
+        android:backgroundTint="@color/brown_light"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/buttonDeleteWorkspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Удалить"
+        android:backgroundTint="@color/dark_red"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

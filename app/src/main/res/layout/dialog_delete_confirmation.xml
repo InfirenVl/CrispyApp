@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/cyan">
+
+    <!-- Заголовок диалога -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вы действительно хотите удалить рабочее пространство?"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp" />
+
+    <!-- Кнопка удаления -->
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Удалить"
+        android:layout_gravity="center_horizontal"
+        android:padding="12dp"
+
+        android:background="@drawable/button_background"
+        android:textColor="@color/white"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Кнопка отмены -->
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Отмена"
+        android:layout_gravity="center_horizontal"
+        android:padding="12dp"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white" />
+</LinearLayout>

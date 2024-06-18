@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Crispy</string>
+    <string name="next">Дальше</string>
+    <string name="skip">Пропустить</string>
+
+    <string name="help_1">Текст подсказки 1</string>
+    <string name="help_2">Текст подсказки 2</string>
+    <string name="help_3">Текст подсказки 3</string>
+    <string name="help_4">Текст подсказки 4</string>
+
+    <string name="registration">Регистрация</string>
+    <string name="login_input">Введите логин</string>
+    <string name="name_input">Введите имя</string>
+    <string name="password_input">Введите пароль</string>
+    <string name="repeat_password_input">Повторно введите пароль</string>
+    <string name="reg_button">Зарегистрироваться</string>
+
+    <string name="text_already">У вас уже есть аккаунт?</string>
+    <string name="enter_move">Войти</string>
+    <string name="login">Вход</string>
+    <string name="lost_password">Забыли пароль?</string>
+    <string name="not_yet_account">У Вас ещё нет аккаунта?</string>
+
+    <string name="create_move">Создать</string>
+    <string name="you_ws">Ваши рабочие пространства</string>
+    <string name="not_yet_ws">У Вас пока нет рабочих пространств</string>
+    <string name="create_ws">Создание рабочего пространства</string>
+    <string name="name_for_ws">Назовите пространство</string>
+
+    <string name="del_is_correct_ws">Вы действительно хотите удалить рабочее пространство?</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Отмена</string>
+    <string name="redact_name">Отредактировать имя</string>
+    <string name="sign_out">Выйти из аккаунта</string>
+
+    <string name="del_is_correct">Удалить аккаунт</string>
+    <string name="del_is_correct_acc">Вы действительно хотите удалить аккаунт?</string>
+    <string name="sign_out_is_correct">Вы действительно хотите выйти из аккаунта?</string>
+    <string name="left">Выйти</string>
+    <string name="crispy">Crispy</string>
+
+    <string name="setting_ws">Настройка пространства</string>
+    <string name="add_user">Добавить пользователя</string>
+    <string name="change">Изменить</string>
+</resources>

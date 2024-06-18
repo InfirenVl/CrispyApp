@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/brown_light"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Создание рабочего пространства"
+        android:textSize="18sp"
+        android:textColor="@color/sand_light"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextWorkspaceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Назовите пространство"
+        android:padding="8dp"
+        android:background="@drawable/bt_text_sand"
+        style="@style/CustomEditTextStyle"
+        android:textColorHint="@color/sand_light"
+        android:layout_marginBottom="16dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCreateWorkspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Создать"
+        android:textAllCaps="false"
+        android:background="@drawable/button_sand"
+        android:textColor="@color/brown" />
+</LinearLayout>

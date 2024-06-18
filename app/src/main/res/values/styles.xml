@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="Widget.Theme.CrispyApp.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+
+
+    <style name="CustomEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="android:textColorHint">@color/brown_light</item> <!-- Hint color -->
+        <item name="android:textColor">@color/brown_light</item> <!-- Text color -->
+        <item name="android:textSize">16sp</item> <!-- Text size -->
+        <item name="android:drawableBottom">@drawable/edittext_underline</item> <!-- Underline drawable -->
+    </style>
+
+    <style name="CustomEditTextStyleAlt" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="android:textColorHint">@color/sand_light</item> <!-- Hint color -->
+        <item name="android:textColor">@color/sand_light</item> <!-- Text color -->
+        <item name="android:textSize">16sp</item> <!-- Text size -->
+        <item name="android:drawableBottom">@drawable/edittext_underline</item> <!-- Underline drawable -->
+    </style>
+</resources>
