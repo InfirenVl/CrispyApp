@@ -2,9 +2,11 @@ package com.infiren.crispyapp.service
 
 import com.infiren.crispyapp.model.AuthResponse
 import com.infiren.crispyapp.model.BoardInfoModel
+import com.infiren.crispyapp.model.BoardName
 import com.infiren.crispyapp.model.UserInfo
 import com.infiren.crispyapp.model.UserModel
 import com.infiren.crispyapp.model.UserSignIn
+import com.infiren.crispyapp.model.WorkspaceIdInfo
 import com.infiren.crispyapp.model.WorkspaceInfo
 import retrofit2.Call
 import retrofit2.http.Body
@@ -17,6 +19,7 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
+
     @POST("/auth/signup")
     fun signup(@Body user: UserModel): Call<Void>
 
@@ -50,4 +53,23 @@ interface ApiService {
     @DELETE("/main/workspaces/{workspaceId}")
     fun deleteWorkspace(@Path("workspaceId") workspaceId: Int, @Header("Authorization") token: String): Call<Void>
 
+    @GET("/main/workspaces/{id}")
+    fun getWorkspace(@Path("id") id: Int, @Header("Authorization") token: String): Call<WorkspaceIdInfo>
+
+    @POST("/main/workspaces/{workspaceId}/boards")
+    fun createBoard(
+        @Path("workspaceId") workspaceId: Int,
+        @Body boardName: BoardName,
+        @Header("Authorization") token: String
+    ): Call<Void>
+
+    @POST("/main/columns/{columnId}/cards")
+    fun createCard(@Path("columnId") columnId: Int, @Body cardData: Map<String, String>, @Header("Authorization") token: String): Call<Void>
+
+    @PUT("/main/workspaces/{workspaceId}/users/{username}")
+    fun addUserToWorkspace(
+        @Path("workspaceId") workspaceId: Int,
+        @Path("username") username: String,
+        @Header("Authorization") token: String
+    ): Call<Void>
 }

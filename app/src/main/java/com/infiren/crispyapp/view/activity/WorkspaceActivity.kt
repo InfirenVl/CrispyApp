@@ -3,16 +3,27 @@ package com.infiren.crispyapp.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import com.infiren.crispyapp.R
+import com.infiren.crispyapp.model.BoardInfo
+import com.infiren.crispyapp.model.BoardName
+import com.infiren.crispyapp.model.WorkspaceIdInfo
+import com.infiren.crispyapp.service.RetrofitClient
+import com.infiren.crispyapp.util.SharedPrefsHelper
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class WorkspaceActivity : AppCompatActivity() {
 
@@ -20,6 +31,8 @@ class WorkspaceActivity : AppCompatActivity() {
     private lateinit var boardContainer: LinearLayout
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var workspaceName: String
+    private var workspaceId: Int = 0
+    private var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +43,7 @@ class WorkspaceActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
         workspaceName = intent.getStringExtra("WORKSPACE_NAME") ?: "Workspace"
+        workspaceId = intent.getIntExtra("WORKSPACE_ID", 0)
         findViewById<TextView>(R.id.workspace_name).text = workspaceName
 
         buttonAddBoard.setOnClickListener {
@@ -53,27 +67,81 @@ class WorkspaceActivity : AppCompatActivity() {
         }
 
         setupBottomNavigationView(bottomNavigationView)
+        loadWorkspaceData()
+    }
 
-        updateAddBoardButtonVisibility()
+    private fun loadWorkspaceData() {
+        token = SharedPrefsHelper(this).getToken()
+        if (token != null) {
+            RetrofitClient.getClient(this).getWorkspace(workspaceId, "Bearer $token")
+                .enqueue(object : Callback<WorkspaceIdInfo> {
+                    override fun onResponse(call: Call<WorkspaceIdInfo>, response: Response<WorkspaceIdInfo>) {
+                        if (response.isSuccessful) {
+                            response.body()?.let { workspace ->
+                                displayBoards(workspace.boards)
+                            }
+                        } else {
+                            Toast.makeText(this@WorkspaceActivity, "Ошибка загрузки данных: ${response.code()}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<WorkspaceIdInfo>, t: Throwable) {
+                        Toast.makeText(this@WorkspaceActivity, "Ошибка: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        } else {
+            navigateToLogin()
+        }
+    }
+
+    private fun displayBoards(boards: List<BoardInfo>) {
+        boardContainer.removeAllViews()
+        for (board in boards) {
+            addBoardCard(board.name)
+        }
     }
 
     private fun showCreateBoardDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_create_board, null)
-        val dialogBuilder = android.app.AlertDialog.Builder(this).setView(dialogView)
+        val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
         val alertDialog = dialogBuilder.show()
 
         val editTextBoardName = dialogView.findViewById<EditText>(R.id.editTextBoardName)
         val buttonCreateBoard = dialogView.findViewById<Button>(R.id.buttonCreateBoard)
+        val buttonCloseDialog = dialogView.findViewById<ImageButton>(R.id.buttonCloseDialog)
+
+        buttonCloseDialog.setOnClickListener {
+            alertDialog.dismiss()
+        }
 
         buttonCreateBoard.setOnClickListener {
             val boardName = editTextBoardName.text.toString()
             if (boardName.isNotEmpty()) {
-                addBoardCard(boardName)
+                createBoard(boardName)
                 alertDialog.dismiss()
             } else {
-                // Show error message if the name is empty
                 editTextBoardName.error = "Введите название"
             }
+        }
+    }
+
+    private fun createBoard(boardName: String) {
+        token?.let {
+            val boardData = BoardName(boardName)
+            RetrofitClient.getClient(this).createBoard(workspaceId, boardData, "Bearer $it")
+                .enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        if (response.isSuccessful) {
+                            loadWorkspaceData() // Обновить данные рабочего пространства
+                        } else {
+                            Toast.makeText(this@WorkspaceActivity, "Ошибка создания доски: ${response.code()}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Toast.makeText(this@WorkspaceActivity, "Ошибка: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
         }
     }
 
@@ -85,16 +153,70 @@ class WorkspaceActivity : AppCompatActivity() {
 
         textBoardName.text = boardName
 
+        cardView.setOnClickListener {
+            navigateToBoard(boardName)
+        }
+
         buttonEdit.setOnClickListener {
-            // Handle edit click
+            showAddUserDialog()
         }
 
         boardContainer.addView(cardView)
-        updateAddBoardButtonVisibility()
     }
 
-    private fun updateAddBoardButtonVisibility() {
-        buttonAddBoard.visibility = if (boardContainer.childCount < 3) View.VISIBLE else View.GONE
+    private fun showAddUserDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_workspace_add_user, null)
+        val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = dialogBuilder.show()
+
+        val editTextAddUser = dialogView.findViewById<EditText>(R.id.editAddUser)
+        val buttonAddUs = dialogView.findViewById<Button>(R.id.buttonAddUs)
+        val buttonCloseDialog = dialogView.findViewById<ImageButton>(R.id.buttonCloseDialog)
+
+        buttonCloseDialog.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        buttonAddUs.setOnClickListener {
+            val username = editTextAddUser.text.toString()
+            if (username.isNotEmpty()) {
+                addUserToWorkspace(username)
+                alertDialog.dismiss()
+            } else {
+                editTextAddUser.error = "Введите логин"
+            }
+        }
+    }
+
+    private fun addUserToWorkspace(username: String) {
+        token?.let {
+            RetrofitClient.getClient(this).addUserToWorkspace(workspaceId, username, "Bearer $it")
+                .enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(this@WorkspaceActivity, "Пользователь добавлен", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@WorkspaceActivity, "Ошибка добавления пользователя: ${response.code()}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Toast.makeText(this@WorkspaceActivity, "Ошибка: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+    }
+
+    private fun navigateToBoard(boardName: String) {
+        val intent = Intent(this, BoardActivity::class.java)
+        intent.putExtra("BOARD_NAME", boardName)
+        startActivity(intent)
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupBottomNavigationView(bottomNavigationView: BottomNavigationView) {

@@ -1,42 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="277dp"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/cyan">
+    android:background="@color/brown_light"
+    android:gravity="center"
+
+
+    android:stateListAnimator="@null"
+    app:elevation="0dp">
 
     <!-- Заголовок диалога -->
     <TextView
-        android:layout_width="wrap_content"
+        android:paddingTop="40dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:text="Вы действительно хотите удалить рабочее пространство?"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/del_is_correct_ws"
+        android:textColor="@color/sand_light"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="16sp" />
 
-    <!-- Кнопка удаления -->
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Удалить"
-        android:layout_gravity="center_horizontal"
-        android:padding="12dp"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="20dp"
+        android:orientation="horizontal">
 
-        android:background="@drawable/button_background"
-        android:textColor="@color/white"
-        android:layout_marginEnd="8dp" />
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="110dp"
+            android:layout_height="60dp"
+            android:text="Удалить"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="15sp"
+            android:backgroundTint="@color/dark_red"
+            android:textColor="@color/white" />
 
-    <!-- Кнопка отмены -->
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Отмена"
-        android:layout_gravity="center_horizontal"
-        android:padding="12dp"
-        android:background="@drawable/button_background"
-        android:textColor="@color/white" />
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="110dp"
+            android:layout_height="60dp"
+            android:text="Отмена"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="15sp"
+            android:backgroundTint="@color/sand_light"
+            android:textColor="@color/brown" />
+    </LinearLayout>
 </LinearLayout>
+

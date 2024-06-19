@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 this@MainActivity,
-                                "Ошибка загрузки данных: ${response.code()}",
+                                "Ошибка сети",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onFailure(call: Call<UserInfo>, t: Throwable) {
                         Toast.makeText(
                             this@MainActivity,
-                            "Ошибка: ${t.message}",
+                            "Ошибка",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -122,6 +122,7 @@ class MainActivity : AppCompatActivity() {
 
         val editTextWorkspaceName = dialogView.findViewById<EditText>(R.id.editTextWorkspaceName)
         val buttonCreateWorkspace = dialogView.findViewById<Button>(R.id.buttonCreateWorkspace)
+        val buttonCloseDialog = dialogView.findViewById<ImageButton>(R.id.buttonCloseDialog) // Измените на ImageButton
 
         buttonCreateWorkspace.setOnClickListener {
             val workspaceName = editTextWorkspaceName.text.toString()
@@ -131,6 +132,10 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Введите название", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        buttonCloseDialog.setOnClickListener {
+            alertDialog.dismiss()
         }
     }
 
@@ -178,13 +183,13 @@ class MainActivity : AppCompatActivity() {
         textWorkspaceUsers.text = workspace.users.toString()
 
         cardView.setOnClickListener {
-            navigateToWorkspace(cleanWorkspaceName)
+            navigateToWorkspace(workspace.id, cleanWorkspaceName)
         }
         buttonSettings.setOnClickListener {
             showEditWorkspaceDialog(workspace)
         }
         buttonDelete.setOnClickListener {
-            deleteWorkspace(workspace.id, cardView)
+            showDeleteConfirmationDialog(workspace.id, cardView)
         }
         workspaceContainer.addView(cardView)
     }
@@ -211,9 +216,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonDeleteWorkspace.setOnClickListener {
-            deleteWorkspace(workspace.id, null)
+            showDeleteConfirmationDialog(workspace.id, null)
             alertDialog.dismiss()
         }
+
+
     }
 
     private fun deleteWorkspace(workspaceId: Int, cardView: View?) {
@@ -249,8 +256,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToWorkspace(workspaceName: String) {
+    private fun showDeleteConfirmationDialog(workspaceId: Int, cardView: View?) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_delete_confirmation, null)
+        val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = dialogBuilder.show()
+
+        val deleteButton = dialogView.findViewById<Button>(R.id.delete_button)
+        val cancelButton = dialogView.findViewById<Button>(R.id.cancel_button)
+
+        deleteButton.setOnClickListener {
+            deleteWorkspace(workspaceId, cardView)
+            alertDialog.dismiss()
+        }
+
+        cancelButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    private fun navigateToWorkspace(workspaceId: Int, workspaceName: String) {
         val intent = Intent(this, WorkspaceActivity::class.java)
+        intent.putExtra("WORKSPACE_ID", workspaceId)
         intent.putExtra("WORKSPACE_NAME", workspaceName)
         startActivity(intent)
     }

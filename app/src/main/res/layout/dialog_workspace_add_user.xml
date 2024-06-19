@@ -1,6 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="544dp"
+    android:background="@color/sand_light"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingBottom="30dp"
+    android:stateListAnimator="@null"
+    app:elevation="0dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/buttonCloseDialog"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/textViewChangeNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_semibold"
+        android:gravity="center"
+        android:text="Редактирование имени"
+        android:textColor="@color/brown_light"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editAddUser"
+        style="@style/CustomEditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/bt_text"
+        android:drawableEnd="@drawable/ic_edit_pole"
+        android:fontFamily="@font/lato_semibold"
+        android:hint="Введите логин пользователя"
+        android:padding="12dp"
+        android:paddingStart="5dp"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewListUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_semibold"
+        android:gravity="center"
+        android:text="Список пользователей"
+        android:textColor="@color/brown_light"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/textViewUserAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/lato_semibold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Романова Мария"
+                android:textColor="@color/brown_light"
+                android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:id="@+id/textViewUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/lato_semibold"
+                android:gravity="center"
+                android:text="Семён Логинов"
+                android:textColor="@color/brown_light"
+                android:textSize="18sp" />
+            <ImageButton
+                android:id="@+id/img_delete_account"
+                android:layout_width="18dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/delete_ic"
+                android:backgroundTint="@color/scarlet"
+                android:contentDescription="Edit" />
+        </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/buttonAddUs"
+        android:layout_width="126dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/brown_light"
+        android:fontFamily="@font/inter_regular"
+        android:text="Добавить"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+
+
+</LinearLayout>

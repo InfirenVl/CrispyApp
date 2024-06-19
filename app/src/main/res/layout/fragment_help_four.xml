@@ -10,7 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/block_4" />
+        android:src="@drawable/block_4_1" />
 
     <TextView
         android:layout_width="300dp"

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Вы действительно хотите выйти из аккаунта?"
         android:textSize="16sp"
-        android:textColor="@color/black"
+        android:textColor="@color/brown_light"
         android:fontFamily="@font/inter_regular"
         android:gravity="center"
         android:layout_marginBottom="16dp" />

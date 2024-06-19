@@ -42,4 +42,6 @@
     <string name="setting_ws">Настройка пространства</string>
     <string name="add_user">Добавить пользователя</string>
     <string name="change">Изменить</string>
+
+    <string name="not_yet_board">У Вас пока нет досок</string>
 </resources>

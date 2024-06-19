@@ -21,6 +21,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.infiren.crispyapp.R
 import com.infiren.crispyapp.model.UserInfo
 import com.infiren.crispyapp.presenter.ProfilePresenter
@@ -36,6 +37,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
     private lateinit var deleteAccountButton: LinearLayout
     private lateinit var profilePassword: TextView
     private lateinit var presenter: ProfilePresenter
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         logoutButton = findViewById(R.id.button_logout)
         deleteAccountButton = findViewById(R.id.button_delete_account)
         profilePassword = findViewById(R.id.profile_password)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
 
         presenter = ProfilePresenter(this)
 
@@ -64,6 +67,22 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 
         profileChangeNameButton.setOnClickListener {
             showChangeNameDialog()
+        }
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
 
         val token = SharedPrefsHelper(this).getToken()

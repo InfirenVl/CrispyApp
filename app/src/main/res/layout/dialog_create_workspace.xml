@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="340dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/brown_light"
-    android:gravity="center">
+    android:gravity="center"
+    android:paddingTop="20dp"
+    android:paddingBottom="30dp"
+    android:stateListAnimator="@null"
+    app:elevation="0dp">>
+
+    <ImageButton
+        android:id="@+id/buttonCloseDialog"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_close"
+        android:backgroundTint="@color/sand_light"/>
+
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:text="Создание рабочего пространства"
-        android:textSize="18sp"
-        android:textColor="@color/sand_light"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_semibold"
         android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:text="Создание рабочего пространства"
+        android:textColor="@color/sand_light"
+        android:textSize="16sp" />
+
 
     <EditText
         android:id="@+id/editTextWorkspaceName"
+        style="@style/CustomEditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Назовите пространство"
-        android:padding="8dp"
-        android:background="@drawable/bt_text_sand"
-        style="@style/CustomEditTextStyle"
+        android:layout_marginBottom="32dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/bt_text_alt"
         android:textColorHint="@color/sand_light"
-        android:layout_marginBottom="16dp" />
+        android:fontFamily="@font/lato_semibold"
+        android:hint="Назовите пространство"
+        android:padding="12dp"
+        android:paddingStart="5dp"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+
+    <Button
         android:id="@+id/buttonCreateWorkspace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/sand_light"
+        android:fontFamily="@font/inter_regular"
         android:text="Создать"
-        android:textAllCaps="false"
-        android:background="@drawable/button_sand"
-        android:textColor="@color/brown" />
+        android:textColor="@color/brown"
+        android:textSize="16sp" />
+
 </LinearLayout>
+

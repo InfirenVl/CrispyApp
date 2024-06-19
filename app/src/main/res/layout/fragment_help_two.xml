@@ -10,14 +10,14 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/block_2" />
+        android:src="@drawable/block_2_1" />
 
     <TextView
         android:layout_width="300dp"
         android:layout_height="164dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="300dp"
-        android:text="После создания Рабочее пространство будет отображаться на Главном экране. Нажмите на кнопку 1, чтобы изменить его название и добавить пользователя. Нажмите на кнопку 2, чтобы удалить пространство. Нажмите на кнопку 3, чтобы создать еще одно Рабочее пространство (максимальное количество пространств: 3)."
+        android:text="После создания Рабочее пространство будет отображаться на Главном экране. Нажмите на кнопку 1, чтобы изменить его название и добавить пользователя. Нажмите на кнопку 2, чтобы удалить пространство."
         android:fontFamily="@font/lato_regular"
         android:textSize="15sp"
         android:textColor="@color/brown_light" />

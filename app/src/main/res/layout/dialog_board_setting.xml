@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="338dp"
+    android:background="@color/sand_light"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:stateListAnimator="@null"
+    app:elevation="0dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/buttonCloseDialog"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/textViewChangeNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_semibold"
+        android:gravity="center"
+        android:text="Настройка доски"
+        android:textColor="@color/brown_light"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextBoardName"
+        style="@style/CustomEditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/bt_text"
+        android:drawableEnd="@drawable/ic_edit_pole"
+        android:fontFamily="@font/lato_semibold"
+        android:hint="Переименовать доску"
+        android:padding="12dp"
+        android:paddingStart="5dp"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="20dp">
+
+        <Button
+            android:id="@+id/buttonUpdateBoard"
+            android:layout_width="121dp"
+            android:layout_height="60dp"
+            android:text="Изменить"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="15sp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/brown_light"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonDeleteBoard"
+            android:layout_width="121dp"
+            android:layout_height="60dp"
+            android:text="Удалить"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/scarlet"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</LinearLayout>

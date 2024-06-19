@@ -2,9 +2,164 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.BoardActivity">
+    android:background="@color/sand_light"
+    tools:context=".view.activity.WorkspaceActivity">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-57dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/upside_aisberg" />
+
+    <TextView
+        android:id="@+id/board_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
+        android:fontFamily="@font/lato_semibold"
+        android:text="@string/crispy"
+        android:textColor="@color/sand_light"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/ic_back"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginBottom="6dp"
+        android:stateListAnimator="@null"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+        <LinearLayout
+            android:id="@+id/board_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutPlanned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_corners"
+                android:minHeight="137dp"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Запланировано"
+                    android:textColor="@color/sand_light"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Placeholder for cards -->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutInProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="137dp"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_corners"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="В процессе"
+                    android:textColor="@color/sand_light"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp"/>
+
+
+
+            </LinearLayout>
+
+            <!-- Поле Завершено -->
+            <LinearLayout
+                android:id="@+id/linearLayoutDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="137dp"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_corners"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Завершено"
+                    android:textColor="@color/sand_light"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="Add Workspace"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="30dp"
+        app:backgroundTint="@color/brown"
+        android:stateListAnimator="@null"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus"
+        app:tint="@color/sand_light" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brown_light"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="33dp"
+        app:itemActiveIndicatorStyle="@color/brown_light"
+        app:itemIconTint="@drawable/selector_bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

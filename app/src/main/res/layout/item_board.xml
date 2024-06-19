@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@color/sand_light"
-    android:padding="16dp"
-    android:layout_marginBottom="8dp"
-    android:gravity="center_vertical">
+    android:layout_height="98dp"
+    android:layout_margin="8dp"
 
-    <TextView
-        android:id="@+id/textBoardName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Board Name"
-        android:textSize="16sp"
-        android:textColor="@color/brown" />
+    app:cardCornerRadius="8dp"
+    android:stateListAnimator="@null"
+    app:elevation="0dp"
+    android:backgroundTint="@color/brown_light">
 
-    <ImageButton
-        android:id="@+id/buttonEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_edit"
-        android:contentDescription="Edit" />
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="18dp"
+            android:layout_height="53dp"
+            app:cardCornerRadius="8dp"
+            android:stateListAnimator="@null"
+            app:elevation="0dp"
+            android:background="@drawable/back_sand"
+
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/textBoardName"
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Доска 1"
+                android:fontFamily="@font/lato_semibold"
+                android:textColor="@color/brown"
+                android:layout_gravity="center"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/buttonEdit"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_edit"
+                android:backgroundTint="@color/brown"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="Edit" />
+
+        </LinearLayout>
+</androidx.cardview.widget.CardView>
